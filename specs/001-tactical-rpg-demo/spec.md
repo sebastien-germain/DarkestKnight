@@ -126,8 +126,9 @@ deployment. Delivers roster management and squad composition decisions.
 Each armor class provides a unique tactical ability that defines the
 knight's role in combat:
 
-- **Warrior** activates one of 3 Types (Soldier, Hunter, Scholar) per
-  turn, boosting an entire Aspect's characteristics by +1 for 1 PE/turn.
+- **Warrior** activates one of 5 Types (Soldier, Hunter, Scholar, Herald,
+  Scout) per turn, boosting an entire Aspect's characteristics by +1 for
+  1 PE/turn.
 - **Paladin** deploys a Shrine (force field granting +6 armor to nearby
   allies) or a Watchtower (stationary gun emplacement granting an extra
   ranged attack per turn at halved Reaction).
@@ -230,11 +231,13 @@ missions.
 
 At Camelot, the player spends Points de Gloire (PG) earned during
 the mission. PG is spent on:
-- **Reconstruction Therapy**: Remove permanent injuries via cybernetic
-  implants (cost varies by injury severity)
+- **Cybernetic Implant** (20 PG): Remove one permanent injury (reduces
+  maxPEs by 3 per implant, max 6 implants, floor maxPEs at 10)
+- **Reconstruction Therapy** (100 PG): Remove all injuries and reset
+  all implant side effects, restoring maxPEs to pre-implant value
 - **Equipment**: Purchase new weapons or grenades
 - **Recruitment**: Replace dead knights with new procedurally generated
-  recruits
+  recruits (free — see FR-031)
 
 The player can also review their full roster, reassign equipment,
 and prepare for the next mission deployment.
@@ -250,7 +253,7 @@ recruitment, verifying roster updates.
 **Acceptance Scenarios**:
 
 1. **Given** a completed mission, **When** the player returns to
-   Camelot, **Then** all surviving knights have HP and PA fully
+   Camelot, **Then** all surviving knights have HP, PA, and PE fully
    restored, but PEs (Espoir) remains at its mission-end value.
 
 2. **Given** PG earned from combat, **When** the player visits the
@@ -258,8 +261,8 @@ recruitment, verifying roster updates.
    permanent injuries from knights.
 
 3. **Given** a dead knight, **When** the player visits recruitment,
-   **Then** they can spend PG to generate a new knight of the same
-   or different armor class to fill the roster slot.
+   **Then** they can generate a new knight of the same or different
+   armor class to fill the roster slot at no PG cost.
 
 4. **Given** the Camelot hub, **When** the player views their roster,
    **Then** they see each knight's full state including carried-over
@@ -394,6 +397,11 @@ special attacks, and unique mechanics.
   The boss gains new stats and abilities; remaining enemies
   continue their turns normally.
 
+- What happens when a knight in Fold receives Mechanic repair
+  that pushes PA above 5? The knight exits Fold (Guardian mode)
+  and regains full armor functionality: OD, abilities, PE spending,
+  and combat styles are re-enabled.
+
 ## Clarifications
 
 ### Session 2026-03-10
@@ -465,8 +473,8 @@ special attacks, and unique mechanics.
 
 **Camelot Hub**
 - **FR-029**: Surviving knights MUST have HP, PA, and PE fully restored upon return to Camelot; PEs (Espoir) MUST NOT reset
-- **FR-029b**: PG MUST be earned per node completed (fixed reward per combat node, bonus reward for boss node). PG is not earned per individual enemy kill.
-- **FR-030**: Players MUST be able to spend PG on: Reconstruction Therapy (remove injuries), equipment, and recruitment (replace dead knights)
+- **FR-029b**: PG MUST be earned per the SPEC-25.3 earning table: 30 PG mission complete, 10 PG survival bonus (all knights alive), 15 PG per boss kill, 5 PG per Colosse kill, 1 PG per Exploit roll, 3 PG per minor Motivation fulfilled, 10 PG per major Motivation fulfilled, 5 PG per Mode Héroïque activation. PG is not earned per individual standard enemy kill.
+- **FR-030**: Players MUST be able to spend PG on: Reconstruction Therapy (remove injuries) and equipment. Recruitment of replacement knights is free (see FR-031)
 - **FR-031**: Dead knights MUST be permanently removed from the roster; replacement knights are procedurally generated at no PG cost (not in TechSpec SPEC-25 — demo addition to prevent unplayable states)
 
 **Weapons & Equipment**

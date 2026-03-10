@@ -75,6 +75,8 @@ Assets/
 │   ├── UXML/                      # Layout documents
 │   ├── USS/                       # Stylesheets
 │   └── Templates/                 # Reusable UI components
+├── Input/
+│   └── CombatActions.inputactions # Combat action map (SPEC-32, research.md §5)
 └── Scenes/
     └── Main.unity                 # Single scene (SPEC-32)
 
@@ -157,9 +159,10 @@ Scripts/
     │   └── MemorialView.cs
     ├── Deployment/
     │   └── DeploymentScreenController.cs
-    └── Shared/
-        ├── DamageNumberPopup.cs
-        └── TooltipSystem.cs
+    ├── Shared/
+    │   ├── DamageNumberPopup.cs
+    │   └── TooltipSystem.cs
+    └── MainMenuScreen.cs          # New Game, Continue, Quit
 
 Tests/
 ├── EditMode/                      # Headless unit + integration

@@ -113,7 +113,7 @@
 
 - [ ] T050 [US1] Write EditMode tests for ComboRollResolver: all 9 styles, Exploit, Failure Critique, PEs penalty, pool=0 auto-fail, OD auto-successes in Tests/EditMode/ComboRollTests.cs — reference SPEC-04 ACs
 - [ ] T051 [US1] Write EditMode tests for ArmourLayerResolver: all worked examples from SPEC-06 (CdF, PA passthrough, Anathème route, Colosse 10:1) in Tests/EditMode/ArmourLayerTests.cs
-- [ ] T052 [US1] Write EditMode tests for DamageResolver: damage chain, violence chain, excess successes in Tests/EditMode/DamageResolverTests.cs — reference SPEC-05 ACs
+- [ ] T052 [US1] Write EditMode tests for DamageResolver and ViolenceResolver: damage chain, violence chain (Cohesion routing), excess successes in Tests/EditMode/DamageResolverTests.cs — reference SPEC-05 ACs
 - [ ] T053 [US1] Write EditMode tests for EspoirSystem: PEs penalty scaling, Despair trigger, stabilization in Tests/EditMode/EspoirSystemTests.cs — reference SPEC-07 ACs
 - [ ] T054 [US1] Write EditMode tests for InjurySystem: Agony trigger, injury table lookup, Hémorragie countdown, Trompe la Mort in Tests/EditMode/InjurySystemTests.cs — reference SPEC-08/23 ACs
 - [ ] T055 [US1] Write EditMode tests for NodSystem: 3 types, Agony exception, Fold PE freeze, quantity tracking in Tests/EditMode/NodSystemTests.cs — reference SPEC-33 ACs
@@ -227,7 +227,7 @@
 
 **Dependencies**: Phase 8 (mission completion provides PG and injured knights)
 
-- [ ] T088 [US5] Implement CamelotHubManager: PS/PA full restore, PE unchanged, auto-refill (grenades 5, Nods 3/3/3), view roster, state machine transitions in Scripts/Meta/CamelotHubManager.cs — reference SPEC-25
+- [ ] T088 [US5] Implement CamelotHubManager: PS/PA/PE full restore, PEs unchanged, auto-refill (grenades 5, Nods 3/3/3), view roster, state machine transitions in Scripts/Meta/CamelotHubManager.cs — reference SPEC-25
 - [ ] T089 [US5] Implement Infirmary: Cybernetic Implant (20 PG, remove 1 injury, maxPEs-3, floor 10), Reconstruction Therapy (100 PG, remove all, reset implants, restore maxPEs) in Scripts/Meta/CamelotHubManager.cs — reference SPEC-25
 - [ ] T090 [US5] Implement PGEconomyManager: earning table (per node completed, boss bonus) per FR-029b, spending table, running total in RunState in Scripts/Meta/PGEconomyManager.cs — reference SPEC-25.3
 - [ ] T091 [US5] Implement squad selection: 4-of-8 selection, lock, transition to deployment in Scripts/Meta/CamelotHubManager.cs — reference SPEC-03/25
@@ -258,7 +258,7 @@
 - [ ] T100 [P] [US2] Implement DeploymentScreenController: 4 rank slots, drag-drop knight placement, enemy preview, cover layout, confirm button in Scripts/UI/Deployment/DeploymentScreenController.cs — reference SPEC-26
 - [ ] T101 [P] [US5] Implement RosterView: roster grid showing all 8 knights with full state (PS/PA/PE/PEs, injuries, equipment, Tarot) in Scripts/UI/Hub/RosterView.cs — reference SPEC-26
 - [ ] T102 [P] [US5] Implement InfirmaryPanel: injury list with treatment costs, implant/therapy buttons, maxPEs impact display in Scripts/UI/Hub/InfirmaryPanel.cs — reference SPEC-26
-- [ ] T103 [P] [US4] Implement MissionSelectView and NodeMapView: 5-node path, branch at Node 2, party status summary in Scripts/UI/Hub/MissionSelectView.cs — reference SPEC-26
+- [ ] T103 [P] [US4] Implement MissionSelectView and NodeMapView: 7-node path (5 combat + 2 narrative), branch at Node 2, party status summary in Scripts/UI/Hub/MissionSelectView.cs — reference SPEC-26
 - [ ] T104 [US5] Implement MemorialView for dead knights and campaign end screen in Scripts/UI/Hub/MemorialView.cs — reference SPEC-25.4
 
 ### Shared UI
