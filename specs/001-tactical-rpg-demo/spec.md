@@ -19,7 +19,8 @@ enemies are defeated or all knights are incapacitated.
 
 The player manages multiple interconnected resources during combat:
 armor points (PA) absorb damage, health (PS) represents physical
-endurance, and energy (PE/Espoir) represents psychological resilience.
+endurance, energy (PE) powers armor abilities, and Espoir (PEs)
+represents psychological resilience.
 Each knight carries consumable Nods (healing, armor repair, energy
 restoration) that cost a movement action to use.
 
@@ -62,7 +63,7 @@ completion. Delivers the core tactical experience.
    **When** another knight uses a Nod de Soin on them within 3 turns,
    **Then** the bleeding knight is stabilized and avoids permadeath.
 
-7. **Given** a knight whose Espoir (PE) reaches 0, **When** despair
+7. **Given** a knight whose Espoir (PEs) reaches 0, **When** despair
    triggers, **Then** the knight becomes hostile, attacks allies for
    1D6 turns, and can only be recovered via a stabilization roll by
    an ally.
@@ -105,7 +106,7 @@ deployment. Delivers roster management and squad composition decisions.
 2. **Given** the roster screen, **When** the player views a knight,
    **Then** they see the knight's armor class, all 5 Aspects and 15
    Characteristics, active Tarot advantages/disadvantages, current
-   HP/PA/PE, any injuries, and equipped weapons.
+   HP/PA/PE/PEs, any injuries, and equipped weapons.
 
 3. **Given** the roster screen, **When** the player selects 4 knights,
    **Then** the selected squad is locked in for the mission and the
@@ -115,7 +116,7 @@ deployment. Delivers roster management and squad composition decisions.
    player views them, **Then** the injury and its mechanical penalty
    are clearly displayed.
 
-5. **Given** a knight with low Espoir (PE), **When** the player views
+5. **Given** a knight with low Espoir (PEs), **When** the player views
    them, **Then** a warning indicates the risk of Despair if deployed.
 
 ---
@@ -183,7 +184,7 @@ This creates mounting attrition pressure across the mission.
 The boss encounter (node 5) features a two-phase fight: Phase 1
 against the Ours Corrompu (Corrupted Bear) with normal combat,
 Phase 2 triggers when the boss's health reaches 0, introducing new
-abilities (Anatheme ranged attack hitting PE directly), reinforcement
+abilities (Anatheme ranged attack hitting PEs directly), reinforcement
 Bande, and aggressive AI.
 
 **Why this priority**: Mission flow ties individual combat encounters
@@ -206,7 +207,7 @@ event triggers at narrative nodes, and the boss phase transition.
    opportunities.
 
 3. **Given** a combat node is completed, **When** transitioning to
-   the next node, **Then** all knight states (HP, PA, PE, injuries,
+   the next node, **Then** all knight states (HP, PA, PE, PEs, injuries,
    remaining Nods) carry over exactly as they were.
 
 4. **Given** the player reaches node 5 (boss), **When** the boss's
@@ -215,7 +216,7 @@ event triggers at narrative nodes, and the boss phase transition.
    more aggressive.
 
 5. **Given** a narrative event node, **When** the player interacts,
-   **Then** a contextual event triggers offering potential PE
+   **Then** a contextual event triggers offering potential PEs
    restoration or tactical information.
 
 ---
@@ -223,7 +224,7 @@ event triggers at narrative nodes, and the boss phase transition.
 ### User Story 5 - Camelot Hub & Post-Mission Management (Priority: P5)
 
 After completing (or failing) a mission, the player returns to Camelot.
-All surviving knights have their HP and PA fully restored, but PE
+All surviving knights have their HP, PA, and PE fully restored, but PEs
 (Espoir) does NOT reset — psychological damage carries between
 missions.
 
@@ -250,7 +251,7 @@ recruitment, verifying roster updates.
 
 1. **Given** a completed mission, **When** the player returns to
    Camelot, **Then** all surviving knights have HP and PA fully
-   restored, but PE remains at its mission-end value.
+   restored, but PEs (Espoir) remains at its mission-end value.
 
 2. **Given** PG earned from combat, **When** the player visits the
    therapy facility, **Then** they can spend PG to remove specific
@@ -262,7 +263,7 @@ recruitment, verifying roster updates.
 
 4. **Given** the Camelot hub, **When** the player views their roster,
    **Then** they see each knight's full state including carried-over
-   PE, any remaining injuries, and equipment.
+   PEs, any remaining injuries, and equipment.
 
 5. **Given** all 8 roster slots are filled, **When** no knights have
    died, **Then** recruitment is unavailable and the player proceeds
@@ -325,7 +326,7 @@ Four enemy factions provide distinct tactical challenges:
   physical stats, Charge Brutale (rush attacks), and the boss
   Ours Corrompu with two combat phases.
 - **La Dame** (seductive horrors): Anatheme attacks that bypass armor
-  and damage PE (morale) directly. Peur (fear) aura that debuffs
+  and damage PEs (morale) directly. Peur (fear) aura that debuffs
   nearby knights.
 - **L'Ophidien** (serpent entities): Tactical enemies with
   poison/continuous damage effects and high Reaction.
@@ -354,7 +355,7 @@ special attacks, and unique mechanics.
    based on distance traveled.
 
 3. **Given** an enemy with Anatheme, **When** they attack, **Then**
-   damage bypasses armor entirely and reduces the target's PE directly.
+   damage bypasses armor entirely and reduces the target's PEs directly.
 
 4. **Given** an enemy with Peur (fear aura), **When** a knight is
    within range, **Then** the knight suffers a dice penalty on all
@@ -412,7 +413,7 @@ special attacks, and unique mechanics.
 - **NFR-003**: Visual style MUST use programmer art (simple consistent sprites, placeholder VFX) — production art is out of scope for this demo
 
 **Persistence**
-- **FR-035**: System MUST auto-save campaign state (roster, PE, injuries, PG, mission progress) when the player returns to Camelot
+- **FR-035**: System MUST auto-save campaign state (roster, PE, PEs, injuries, PG, mission progress) when the player returns to Camelot
 - **FR-036**: On launch, system MUST load the existing auto-save if present, or start a new campaign if none exists
 - **FR-037**: There is a single save slot; starting a new campaign overwrites the previous save
 
@@ -428,7 +429,7 @@ special attacks, and unique mechanics.
 - **FR-005**: Combat MUST take place on a 4-position linear track with knights and enemies occupying positions
 - **FR-006**: Turn order MUST be determined by initiative values, displayed in a visible queue
 - **FR-006b**: Each knight's turn consists of one move action and one combat action. Using a Nod or switching weapons consumes the move action. Moving to an adjacent position on the track consumes the move action. Skipping the move action is allowed.
-- **FR-007**: Players MUST choose a combat style each turn: Agressif (+3 dice, -2 Def/React), Defensif (-3 dice, +2 Def), Precis (+2nd characteristic), or other available styles
+- **FR-007**: Players MUST choose a combat style each turn from 9 styles: Standard (no mod), Agressif (+3 dice, -2 Def/React), Défensif (-3 dice, +2 Def), Mise à Couvert (no attack, +3 Def), Puissant (+1D6 damage, -1 attack die), Pilonnage (double damage dice, no Violence), Précis (+2nd characteristic), Ambidextre (2 attacks, -3 dice each), Akimbo (1 combined, -3 dice)
 - **FR-008**: Attack resolution MUST use dice pools: roll Base + Combo + modifiers, count even results as successes, compare against Defense (melee) or Reaction (ranged)
 - **FR-009**: Hit threshold MUST require successes to STRICTLY EXCEED defense/reaction (equal = miss)
 - **FR-010**: All mathematical operations MUST floor (round down) for division
@@ -441,8 +442,8 @@ special attacks, and unique mechanics.
 **Status & Consequences**
 - **FR-014**: When PS reaches 0, Agony MUST trigger with an injury table roll determining consequences
 - **FR-015**: Hemorragie injury MUST impose a 3-turn countdown to permadeath, recoverable only by ally Nod de Soin
-- **FR-016**: When PE reaches 0, Despair MUST trigger: knight becomes hostile for 1D6 turns, attackable only via stabilization roll
-- **FR-017**: PE penalties MUST apply to all rolls when PEs drops below 10: penalty = max(0, 10 − currentPEs) dice removed from every pool (per SPEC-07)
+- **FR-016**: When PEs reaches 0, Despair MUST trigger: knight becomes hostile for 1D6 turns, attackable only via stabilization roll
+- **FR-017**: PEs penalties MUST apply to all rolls when PEs drops below 10: penalty = max(0, 10 − currentPEs) dice removed from every pool (per SPEC-07)
 - **FR-018**: Heroism (0–6, starts at 0) MUST be spendable for: rerolling failed dice, maximizing weapon damage, ignoring injury/despair penalties
 
 **Armor Class Abilities**
@@ -459,14 +460,14 @@ special attacks, and unique mechanics.
 
 **Mission Structure**
 - **FR-026**: Missions MUST consist of 7 nodes (5 combat, 2 narrative events) with branching at node 2
-- **FR-027**: All knight state (HP, PA, PE, injuries, Nods) MUST carry over between nodes with no recovery except Nod usage
+- **FR-027**: All knight state (HP, PA, PE, PEs, injuries, Nods) MUST carry over between nodes with no recovery except Nod usage
 - **FR-028**: Each knight MUST carry 3 Nods of each type (Soin, Armure, Energie) per mission, usable as movement action in combat or free action between nodes
 
 **Camelot Hub**
-- **FR-029**: Surviving knights MUST have HP and PA fully restored upon return to Camelot; PE MUST NOT reset
+- **FR-029**: Surviving knights MUST have HP, PA, and PE fully restored upon return to Camelot; PEs (Espoir) MUST NOT reset
 - **FR-029b**: PG MUST be earned per node completed (fixed reward per combat node, bonus reward for boss node). PG is not earned per individual enemy kill.
 - **FR-030**: Players MUST be able to spend PG on: Reconstruction Therapy (remove injuries), equipment, and recruitment (replace dead knights)
-- **FR-031**: Dead knights MUST be permanently removed from the roster; replacement knights are procedurally generated
+- **FR-031**: Dead knights MUST be permanently removed from the roster; replacement knights are procedurally generated at no PG cost (not in TechSpec SPEC-25 — demo addition to prevent unplayable states)
 
 **Weapons & Equipment**
 - **FR-032**: Each weapon MUST have a profile: damage dice, violence dice, range band, and special effects
@@ -475,7 +476,7 @@ special attacks, and unique mechanics.
 
 ### Key Entities
 
-- **Knight**: A player-controlled combatant with armor class, 5 Aspects (each with 3 Characteristics), Tarot-derived advantages/disadvantages, archetype personality, Blason, Haut Fait, equipment loadout, and current state (PA, PS, PE, injuries)
+- **Knight**: A player-controlled combatant with armor class, 5 Aspects (each with 3 Characteristics), Tarot-derived advantages/disadvantages, archetype personality, Blason, Haut Fait, equipment loadout, and current state (PA, PS, PE, PEs, injuries)
 - **Armor Class**: One of 4 types (Warrior, Paladin, Priest, Rogue) defining base stats, unique ability, and tactical role
 - **Weapon Profile**: A weapon's combat statistics including damage, violence, range, and special effects
 - **Enemy**: An AI-controlled combatant with faction, tier (Bande/Hostile/Initie/Colosse/Patron), stats, AI behavior, and special abilities

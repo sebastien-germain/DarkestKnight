@@ -207,7 +207,7 @@
 **Dependencies**: Phase 7 (enemy AI for encounters), Phase 3 (combat for node resolution)
 
 - [ ] T080 [US4] Implement BossPhaseController: P1→P2 on PS=0 (override Agony), apply P2 stats, unlock new abilities, -1D6 PEs all knights, Bande reinforcement, Charge cooldown reset in Scripts/Combat/BossPhaseController.cs — reference SPEC-14
-- [ ] T081 [US4] Implement MissionManager: 5-node graph with branching at node 2, combat end = all enemies eliminated, no retreat from Node 5 in Scripts/Meta/MissionManager.cs — reference SPEC-22
+- [ ] T081 [US4] Implement MissionManager: 7-node graph (5 combat + 2 narrative) with branching at node 2, combat end = all enemies eliminated, no retreat from Node 5 in Scripts/Meta/MissionManager.cs — reference SPEC-22
 - [ ] T082 [US4] Implement node transition logic: no auto-recovery, state carries over, Nod free use between nodes, dead stay dead, ApplyCombatResults atomic commit in Scripts/Meta/MissionManager.cs — reference SPEC-13, SPEC-32
 - [ ] T083 [US4] Implement narrative event system: 4 events (survivor +1D6 PEs, Point Faible reveal, pre-battle prayer, darkness erupts) in Scripts/Meta/MissionManager.cs — reference SPEC-22.3
 - [ ] T084 [US4] Implement SaveSystem: serialize RunState to JSON at node transitions and Camelot return, resume = reload pre-combat state + rebuild RNG, single auto-save slot in Scripts/Meta/SaveSystem.cs — reference SPEC-13, FR-035/036/037
@@ -264,6 +264,7 @@
 ### Shared UI
 
 - [ ] T105 [P] Implement DamageNumberPopup (floating TMP numbers) and TooltipSystem in Scripts/UI/Shared/DamageNumberPopup.cs and Scripts/UI/Shared/TooltipSystem.cs
+- [ ] T105b [P] Implement MainMenuScreen (New Game, Continue, Quit) with GameStateMachine integration in Scripts/UI/MainMenuScreen.cs
 
 ---
 
@@ -314,6 +315,8 @@ Phase 10 (UI) can start after Phase 3 for combat UI, after Phase 9 for hub UI
 Phase 11 (Art) can run in parallel from Phase 3 onward
 Phase 12 (Integration) requires all phases 1–9 complete
 ```
+
+**Note**: Task phases (Phase 1–12) are organizational groupings for this file. They do NOT map 1:1 to SPEC-16's 8 dependency phases. See the mapping table below for the correspondence.
 
 ### SPEC-16 Phase Mapping
 

@@ -249,7 +249,7 @@ Xoshiro128** PRNG. xxHash32 seed derivation. FNV-1a string hashing. 3 streams (C
 | Armor Evolutions (150/200/250 PG) | STUB | Scaffolded. Lock UI buttons |
 | Mode Héroïque objectives | STUB | Simplified "persist until 0 PS/PEs" |
 | Points de Contact | STUB | SPEC says do NOT compute for demo |
-| Camelot weapon shop | STUB | Default loadouts only |
+| Camelot weapon shop | STUB | Default loadouts only — no task needed, knights use preset equipment |
 | Audio/VFX | STUB | Fire SPEC-27 events, attach SFX later |
 
 ## Generated Artifacts
