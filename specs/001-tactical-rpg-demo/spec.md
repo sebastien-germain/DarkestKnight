@@ -393,7 +393,28 @@ special attacks, and unique mechanics.
   The boss gains new stats and abilities; remaining enemies
   continue their turns normally.
 
+## Clarifications
+
+### Session 2026-03-10
+
+- Q: What is the target platform for this demo? → A: PC (Windows/Mac/Linux standalone)
+- Q: What visual fidelity level should the demo target? → A: Programmer art (simple consistent sprites, placeholder effects)
+- Q: Should the demo include a save/load system for campaign persistence? → A: Single auto-save at Camelot hub (campaign state persists between sessions)
+- Q: How many actions does a knight get per turn? → A: One move action + one combat action (Nod/weapon switch replaces move)
+- Q: How are Points de Gloire (PG) earned during a mission? → A: Per node completed (fixed PG reward per node, bonus for boss)
+
 ## Requirements *(mandatory)*
+
+### Non-Functional Requirements
+
+- **NFR-001**: Target platform MUST be PC standalone (Windows, Mac, Linux) built with Unity
+- **NFR-002**: Input MUST support keyboard and mouse
+- **NFR-003**: Visual style MUST use programmer art (simple consistent sprites, placeholder VFX) — production art is out of scope for this demo
+
+**Persistence**
+- **FR-035**: System MUST auto-save campaign state (roster, PE, injuries, PG, mission progress) when the player returns to Camelot
+- **FR-036**: On launch, system MUST load the existing auto-save if present, or start a new campaign if none exists
+- **FR-037**: There is a single save slot; starting a new campaign overwrites the previous save
 
 ### Functional Requirements
 
@@ -406,6 +427,7 @@ special attacks, and unique mechanics.
 **Combat Core**
 - **FR-005**: Combat MUST take place on a 4-position linear track with knights and enemies occupying positions
 - **FR-006**: Turn order MUST be determined by initiative values, displayed in a visible queue
+- **FR-006b**: Each knight's turn consists of one move action and one combat action. Using a Nod or switching weapons consumes the move action. Moving to an adjacent position on the track consumes the move action. Skipping the move action is allowed.
 - **FR-007**: Players MUST choose a combat style each turn: Agressif (+3 dice, -2 Def/React), Defensif (-3 dice, +2 Def), Precis (+2nd characteristic), or other available styles
 - **FR-008**: Attack resolution MUST use dice pools: roll Base + Combo + modifiers, count even results as successes, compare against Defense (melee) or Reaction (ranged)
 - **FR-009**: Hit threshold MUST require successes to STRICTLY EXCEED defense/reaction (equal = miss)
@@ -441,6 +463,7 @@ special attacks, and unique mechanics.
 
 **Camelot Hub**
 - **FR-029**: Surviving knights MUST have HP and PA fully restored upon return to Camelot; PE MUST NOT reset
+- **FR-029b**: PG MUST be earned per node completed (fixed reward per combat node, bonus reward for boss node). PG is not earned per individual enemy kill.
 - **FR-030**: Players MUST be able to spend PG on: Reconstruction Therapy (remove injuries), equipment, and recruitment (replace dead knights)
 - **FR-031**: Dead knights MUST be permanently removed from the roster; replacement knights are procedurally generated
 
