@@ -44,10 +44,10 @@ completion. Delivers the core tactical experience.
    **Then** they receive +3 bonus dice but suffer -2 to Defense and
    Reaction values.
 
-3. **Given** an enemy with armor, **When** damage is dealt, **Then**
+3. **Given** a combatant with armor, **When** damage is dealt, **Then**
    damage is reduced by CdF (passive armor), remaining damage depletes
-   PA, and for every 5 PA absorbed the knight takes 1 PS passthrough
-   damage.
+   PA, and for every 5 PA absorbed the combatant takes 1 PS passthrough
+   damage (applies to all combatants with PA, not only knights).
 
 4. **Given** a knight whose PA reaches 0, **When** the armor is
    depleted, **Then** the armor folds into Guardian mode (weaker
@@ -442,8 +442,8 @@ special attacks, and unique mechanics.
 - **FR-014**: When PS reaches 0, Agony MUST trigger with an injury table roll determining consequences
 - **FR-015**: Hemorragie injury MUST impose a 3-turn countdown to permadeath, recoverable only by ally Nod de Soin
 - **FR-016**: When PE reaches 0, Despair MUST trigger: knight becomes hostile for 1D6 turns, attackable only via stabilization roll
-- **FR-017**: PE penalties MUST apply to all rolls when PE drops below threshold (scaling penalties as PE decreases)
-- **FR-018**: Heroism MUST be spendable for: rerolling failed dice, maximizing weapon damage, ignoring injury/despair penalties
+- **FR-017**: PE penalties MUST apply to all rolls when PEs drops below 10: penalty = max(0, 10 − currentPEs) dice removed from every pool (per SPEC-07)
+- **FR-018**: Heroism (0–6, starts at 0) MUST be spendable for: rerolling failed dice, maximizing weapon damage, ignoring injury/despair penalties
 
 **Armor Class Abilities**
 - **FR-019**: Warriors MUST be able to activate Types (Soldier/Hunter/Scholar) for +1 to an Aspect's characteristics at 1 PE/turn
@@ -455,6 +455,7 @@ special attacks, and unique mechanics.
 - **FR-023**: Bande (swarm) enemies MUST use shared Cohesion health, be damageable only by Violence, and deal escalating Debordement automatic damage each turn
 - **FR-024**: Individual enemies MUST have distinct AI behaviors based on faction (aggression patterns, target selection, special abilities)
 - **FR-025**: Boss encounters MUST support multi-phase transitions with stat changes and new ability unlocks
+- **FR-025b**: Colosse-tier enemies MUST use the 10:1 damage rule: every 10 points of damage dealt = 1 PS lost, PA is bypassed entirely (per SPEC-18)
 
 **Mission Structure**
 - **FR-026**: Missions MUST consist of 7 nodes (5 combat, 2 narrative events) with branching at node 2
@@ -470,7 +471,7 @@ special attacks, and unique mechanics.
 **Weapons & Equipment**
 - **FR-032**: Each weapon MUST have a profile: damage dice, violence dice, range band, and special effects
 - **FR-033**: Weapon switching in combat MUST cost 1 movement action
-- **FR-034**: Grenades (5 types, 5 per mission) MUST apply faction-appropriate tactical effects and auto-refill at Camelot
+- **FR-034**: Grenades (5 types: Shrapnel, Flashbang, Anti-Armor, IEM, Explosive; 5 per mission total) MUST apply their tactical effects (area damage, stun, ignore CdF, disable electronics, blast) and auto-refill at Camelot
 
 ### Key Entities
 

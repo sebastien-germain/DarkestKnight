@@ -28,6 +28,7 @@
 - [ ] T007 [P] Scaffold RunState (persistent) and CombatSession (ephemeral) with field boundary from SPEC-32 in Scripts/Core/RunState.cs and Scripts/Combat/CombatSession.cs
 - [ ] T008 Write EditMode tests for RNG determinism (same seed → identical sequence, cross-stream isolation, NodeSeed derivation) in Tests/EditMode/RNGDeterminismTests.cs — reference SPEC-28-AC1, AC5
 - [ ] T009 Create Main.unity scene with GameStateMachine root object in Assets/Scenes/Main.unity — reference SPEC-32
+- [ ] T009b [P] Create Input Actions asset with combat action map (SelectTarget, ConfirmAction, CancelAction, CycleKnight, OpenMenu, EndTurn) in Assets/Input/CombatActions.inputactions — reference research.md §5
 
 **Checkpoint**: Project compiles. RNG determinism proven by green tests. All enums available.
 
@@ -91,7 +92,8 @@
 - [ ] T035 [US1] Implement CombatantState with LifeState, ControlState, ActionState, ArmorState, IsSquadDefeated() canonical function in Scripts/Combat/State/CombatantState.cs — reference SPEC-30
 - [ ] T036 [US1] Implement ComboRollResolver: dice pool building (Base + Combo + style mods + PEs penalty + injury penalties), D6 roll, even counting, OD auto-successes, Exploit (all even → reroll + heroism), Failure Critique (all odd) in Scripts/Combat/Resolvers/ComboRollResolver.cs — reference SPEC-04
 - [ ] T037 [US1] Implement combat style modifier system (9 styles: Standard, Agressif, Défensif, Mise à Couvert, Puissant, Pilonnage, Précis, Ambidextre, Akimbo) in Scripts/Combat/Resolvers/ComboRollResolver.cs — reference SPEC-04
-- [ ] T038 [US1] Implement DamageResolver: 8-step damage chain (hit check → weapon dice SUM → flat bonus → stat bonuses → style bonus dice → Dégâts Maximum → route to armour) and Violence chain (SUM → Cohesion) in Scripts/Combat/Resolvers/DamageResolver.cs — reference SPEC-05
+- [ ] T038 [US1] Implement DamageResolver: 8-step damage chain (hit check → weapon dice SUM → flat bonus → stat bonuses → style bonus dice → Dégâts Maximum → route to armour) in Scripts/Combat/Resolvers/DamageResolver.cs — reference SPEC-05
+- [ ] T038b [US1] Implement ViolenceResolver: Violence dice SUM → apply to Bande Cohesion, Violence-only routing in Scripts/Combat/Resolvers/ViolenceResolver.cs — reference SPEC-05
 - [ ] T039 [US1] Implement ArmourLayerResolver: 8-step canonical pipeline (CdF → Bouclier → Chair Mineur → Destructeur → PA + passthrough floor(paAbsorbed/5) → Meurtrier → PS → Agony trigger) in Scripts/Combat/Resolvers/ArmourLayerResolver.cs — reference SPEC-06
 - [ ] T040 [US1] Implement Anathème damage route (CdF → remainder hits PEs, PA bypassed) in Scripts/Combat/Resolvers/ArmourLayerResolver.cs — reference SPEC-06
 - [ ] T041 [US1] Implement EspoirSystem: PEs penalty calculation (max(0, 10 - currentPEs)), state table (Résolu→Désespoir), loss/recovery source tracking in Scripts/Combat/State/EspoirSystem.cs — reference SPEC-07
